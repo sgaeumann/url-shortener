@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from loguru import logger
 
 from .url_cleaning import clean_url
+from .url_hash import hash_url
 
 app = FastAPI()
 
@@ -22,5 +23,6 @@ async def generate_url(url: str):
     # cleanse url
     url = clean_url()
     # compute hash
+    url = hash_url(url)
     # return shortened url
     return {"result": url}
